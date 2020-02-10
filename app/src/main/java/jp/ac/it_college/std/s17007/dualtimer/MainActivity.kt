@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        buttonLeft.setOnClickListener{
+        buttonLeft.setOnClickListener{//左ボタン
             if(flagL == 0 && flagR == 0){//片方ずつ稼働させる
                 handler.post(runnableL)
                 flagL = 1
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        buttonRight.setOnClickListener{
+        buttonRight.setOnClickListener{//右ボタン
             if(flagR == 0 && flagL == 0){//片方ずつ稼働させる
                 handler.post(runnableR)
                 flagR = 1
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        reset.setOnClickListener{
+        reset.setOnClickListener{//リセットボタン
             handler.removeCallbacks(runnableL)
             handler.removeCallbacks(runnableR)
             timeValLeft = 0
@@ -89,17 +89,15 @@ class MainActivity : AppCompatActivity() {
                 TotalTime.text = it
             }
         }
-
     }
 
 
     private fun calcTotalTime(): Int {
-        return timeValLeft + timeValRight
-
+        return timeValLeft + timeValRight//timeValTotal = timeValLeft + timeValRight
     }
 
 
-    private fun timeToText(time: Int = 0): String? {
+    private fun timeToText(time: Int = 0): String? {//表示用
         return if(time < 0){
             null
         } else if(time == 0){
